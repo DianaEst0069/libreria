@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 //Uso del Modelo
 use App\Models\Libro;
 
+//Uso de clase Http
+use Illuminate\Support\Facades\Http;
+
 class LibroController extends Controller
 {
     /**
@@ -96,4 +99,21 @@ class LibroController extends Controller
         return redirect() -> route('libros.index')
         -> with('success', 'Libro eliminado');
     }
+    //Método para mostrar los libros en página principal
+    public function home(){
+        //Obtener respuesta del API y mandarla a una vista
+        $response = Http::get('https://www.googleapis.com/books/v1/volumes',[
+        //Se incluyen los parametros del API
+        'q' => 'subject:fiction',
+        'maxResults' => 12,
+        key =>config('services.google_books.key')
+        ]);
+
+          //Guardar la resuesta de JSON y limitarla a los items
+        $libros = $response -> json()['items'] ?? [];
+        return view('libros.home', compact('libros'));
+    }
+
+
+
 }

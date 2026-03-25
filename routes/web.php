@@ -15,6 +15,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('libros', LibroController::class);
 });
 
+//Ruta para mostrar el inicio del sistema 
+Route::get('/home', [
+    LibroController::class, 'home'
+])->name('home');
+
 //Ruta para consultar la informacion del libro
 Route::get('libro/{id}/edit', [
     LibroController::class, 'edit'

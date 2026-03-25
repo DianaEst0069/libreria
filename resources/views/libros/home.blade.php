@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros</title>
+</head>
+<body>
+    <h1>LIBROS DISPONIBLES</h1>
+
+    <div style="display:flex; flex-wrap: wrap; gap: 20px;">
+        @foreach($libros as $libro)
+            <div style="width: 200px;">
+
+            </div>
+        @endforeach
+    </div>
+</body>
+</html>
