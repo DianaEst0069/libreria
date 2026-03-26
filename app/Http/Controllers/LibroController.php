@@ -106,7 +106,7 @@ class LibroController extends Controller
         //Se incluyen los parametros del API
         'q' => 'subject:fiction',
         'maxResults' => 12,
-        key =>config('services.google_books.key')
+        'key' => config('services.google_books.key')
         ]);
 
           //Guardar la resuesta de JSON y limitarla a los items
