@@ -102,16 +102,25 @@ class LibroController extends Controller
     //Método para mostrar los libros en página principal
     public function home(){
         //Obtener respuesta del API y mandarla a una vista
-        $response = Http::get('https://www.googleapis.com/books/v1/volumes',[
+        //Libros de historia
+        $history = Http::get('https://www.googleapis.com/books/v1/volumes',[
         //Se incluyen los parametros del API
-        'q' => 'subject:fiction',
-        'maxResults' => 12,
+        'q' => 'subject:history',
+        'maxResults' => 5,
         'key' => config('services.google_books.key')
-        ]);
+        ])->json()['items'] ?? [];
+
+        //Libros de fantasia
+        $fantasy = Http::get('https://www.googleapis.com/books/v1/volumes',[
+        //Se incluyen los parametros del API
+        'q' => 'subject:fantasy',
+        'maxResults' => 5,
+        'key' => config('services.google_books.key')
+        ])->json()['items'] ?? [];
 
           //Guardar la resuesta de JSON y limitarla a los items
-        $libros = $response -> json()['items'] ?? [];
-        return view('libros.home', compact('libros'));
+         //$libros = $response -> json()['items'] ?? [];
+        return view('libros.home', compact('history', 'fantasy'));
     }
 
 
