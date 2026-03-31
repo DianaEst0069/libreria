@@ -4,6 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Auth\Events\Login;
+use Illuminate\Support\Facades\Event;
+
+use App\Listeners\EnviarCorreo;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**

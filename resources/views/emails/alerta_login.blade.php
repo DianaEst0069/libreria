@@ -32,7 +32,7 @@
                 <h1>Nuevo inicio de sesión detectado</h1>
                 <p>Se ha detectado actividad nueva en tu cuenta</p>
 
-                <a href="{{ route('acceso') }}" class="btn">
+                <a href="{{ route('acceso') }}" class="btn" style="color: white">
                     Ir al sistema
                 </a>
 
