@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        //Registrar evento para enviar el correo
+        Event::listen(Login::class, EnviarCorreo::class);
     }
 }
